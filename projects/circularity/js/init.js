@@ -20,20 +20,22 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-var circle;	
-var circles = [];
-
+        var circles;
+        var circles = [];
+//I CANT GET THIS TO RUN AND IDK WHY, I DID IT RIGHT THEN PEER CHECKED IT WITH MY FRIEND AND IT STILL WONT WORK
         // TODO 2 : Create a function that draws a circle 
-        function drawCircle(){
-
-        };
+        function drawCircle() {
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2)
+            physikz.addRandomVelocity(circle, canvas, 10, 10);
+            view.addChild(circle);
+            circles.push(circle);
+        }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
+for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++){
+    drawCircle()
+}
+
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
         ////////////////////////////////////////////////////////////
@@ -45,19 +47,17 @@ var circles = [];
         */
         function update() {
             // TODO 4 : Update the circle's position //
-physikz.updatePosition([0]);
-physikz.updatePosition([1]);
-physikz.updatePosition([2]);
-physikz.updatePosition([3]);
-physikz.updatePosition([4]);
+
+            
             // TODO 5 : Call game.checkCirclePosition() on your circles.
-           game.checkCirclePosition(2)
-            game.checkCirclePosition(4) 
-            game.checkCirclePosition(5)
-            game.checkCirclePosition(3)
-            game.checkCirclePosition(0)
-            // TODO 8 : Iterate over the array
            
+
+            // TODO 8 : Iterate over the array
+           for (var i = 0; i < circles.length; i++) {
+               var eachCircle = circles[i];
+               physikz.updatePosition(eachCircle);
+               game.checkCirclePosition(eachCircle);
+           }
             
         }
     
@@ -74,13 +74,16 @@ physikz.updatePosition([4]);
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-             if ( circle.y > canvas.height ) {
-                circle.y = 0;
-            } if ( x < 0) {
-                circle.x = 0;
-            } if ( y < 0 ) {
-                circle.y = 0;
-            }
+            if ( circle.y > canvas.height ) {
+		circle.y = 0;
+    }
+    if ( circle.x < 0 ) {
+		circle.x = canvas.width;
+    }
+    if ( circle.y > 0) {
+		circle.x = canvas.height;
+    }
+   
 
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
