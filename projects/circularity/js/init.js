@@ -20,21 +20,21 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-        var circles;
-        var circles = [];
+        var circle;
+        var circles = []
 //I CANT GET THIS TO RUN AND IDK WHY, I DID IT RIGHT THEN PEER CHECKED IT WITH MY FRIEND AND IT STILL WONT WORK
         // TODO 2 : Create a function that draws a circle 
         function drawCircle() {
-            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2)
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
             physikz.addRandomVelocity(circle, canvas, 10, 10);
             view.addChild(circle);
             circles.push(circle);
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++){
-    drawCircle()
-}
+        for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++){
+            drawCircle()
+        }
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -75,14 +75,14 @@ for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++){
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
             if ( circle.y > canvas.height ) {
-		circle.y = 0;
-    }
-    if ( circle.x < 0 ) {
-		circle.x = canvas.width;
-    }
-    if ( circle.y > 0) {
-		circle.x = canvas.height;
-    }
+                circle.y = 0;
+            }
+            if ( circle.x < 0 ) {
+                circle.x = canvas.width;
+            }
+            if ( circle.y < 0) {
+                circle.y = canvas.height;
+            }
    
 
 
